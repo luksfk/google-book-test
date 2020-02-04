@@ -1,0 +1,30 @@
+<div class="search-book-parent" id="seachBookParent">
+    <mat-form-field class="search-book-form-field">
+        <input [disabled]="loadingData" matInput type="text" placeholder="Pesquisar livros" [(ngModel)]="search">
+        <button [disabled]="loadingData" mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Pesquisar"
+            (click)="searchBook()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <div class="loading-data-content" *ngIf="loadingData" id="loadingData">
+        <mat-progress-spinner mode="indeterminate" [diameter]='40'></mat-progress-spinner>
+    </div>
+</div>
+
+<div class="empty-results" *ngIf="emptyResults; else bookList">
+    Nenhum registro encontrado.
+</div>
+
+<ng-template #bookList>
+    <div *ngIf="books.length > 0">
+        <div *ngFor="let book of books">
+            <app-book-card [favorite]="book.favorite" [book]="book.volumeInfo" [id]="book.id"
+                [thumbnail]="book.volumeInfo.imageLinks?.smallThumbnail">
+            </app-book-card>
+        </div>
+
+        <mat-paginator (page)="pageChanged($event)" [length]="totalItems" [pageSize]="pageSize"></mat-paginator>
+
+    </div>
+</ng-template>

@@ -1,0 +1,13 @@
+<div class="loading-favorites-parent" *ngIf="loadingFavorites">
+    <mat-progress-spinner mode="indeterminate" [diameter]='40'></mat-progress-spinner>
+</div>
+
+<div *ngFor="let book of books">
+    <app-book-card (favoriteChanged)="favoriteChanged()" [book]="book" [id]="book.bookId" [favorite]="book.favorite"
+        [thumbnail]="book.thumbnail">
+    </app-book-card>
+</div>
+
+<div *ngIf="!loadingFavorites && books.length === 0">
+    Nenhum registro encontrado.
+</div>

@@ -1,0 +1,17 @@
+.dashboard-card {
+    margin: 15px;
+}
+
+.dashboard-card-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.book-image {
+    display: flex;
+    align-items: center;
+}
+
+.book-content {
+    margin-left: 20px;
+}

@@ -1,0 +1,26 @@
+<mat-card class="dashboard-card">
+    <mat-card-header>
+        <mat-card-title>
+            {{book.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{getBookSubtitle()}}
+        </mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+        <div class="book-image">
+            <img src="{{thumbnail}}">
+        </div>
+        <div class="book-content">
+            <p>{{book.description}}</p>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button (click)="toggleFavoriteBook()" mat-icon-button aria-label="Favorito">
+            <mat-icon *ngIf="!favorite">favorite_border</mat-icon>
+            <mat-icon *ngIf="favorite" color="warn">favorite</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
